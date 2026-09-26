@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NestJS Auth & API Key Kit</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>NestJS Auth & API Key Kit</h1>
+      <p class="subtitle">JWT authentication and API key management demo</p>
+    </header>
+
+    <section id="health-section" class="card">
+      <h2>System Health</h2>
+      <button id="check-health-btn" class="btn btn-secondary">Check Health</button>
+      <div id="health-result" class="result-box"></div>
+    </section>
+
+    <section id="auth-section" class="card">
+      <h2>Authentication</h2>
+      
+      <div id="logged-out-view">
+        <div class="tabs">
+          <button id="tab-signup" class="tab-btn active">Sign Up</button>
+          <button id="tab-login" class="tab-btn">Login</button>
+        </div>
+
+        <div id="signup-form-container" class="form-container">
+          <form id="signup-form">
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password (min 8 chars)</label>
+              <input type="password" id="signup-password" minlength="8" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
+        </div>
+
+        <div id="login-form-container" class="form-container" style="display: none;">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="logged-in-view" style="display: none;">
+        <div class="user-info">
+          <p>Logged in as: <strong id="user-email"></strong></p>
+          <button id="logout-btn" class="btn btn-secondary">Logout</button>
+        </div>
+      </div>
+
+      <div id="auth-result" class="result-box"></div>
+    </section>
+
+    <section id="api-keys-section" class="card" style="display: none;">
+      <h2>API Keys</h2>
+      
+      <div class="api-key-actions">
+        <form id="create-key-form">
+          <div class="form-group">
+            <label for="key-name">Key Name</label>
+            <input type="text" id="key-name" placeholder="e.g., Production API Key" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Create API Key</button>
+        </form>
+      </div>
+
+      <div id="new-key-alert" class="alert alert-warning" style="display: none;">
+        <h3>⚠️ Save Your API Key</h3>
+        <p>This is your new API key. Copy it now - it will never be shown again!</p>
+        <div class="key-display">
+          <code id="new-key-value"></code>
+          <button id="copy-key-btn" class="btn btn-small">Copy</button>
+        </div>
+      </div>
+
+      <div id="api-keys-list">
+        <h3>Your API Keys</h3>
+        <button id="refresh-keys-btn" class="btn btn-secondary">Refresh List</button>
+        <div id="keys-container"></div>
+      </div>
+
+      <div id="api-keys-result" class="result-box"></div>
+    </section>
+
+    <section id="protected-section" class="card" style="display: none;">
+      <h2>Protected Route Demo</h2>
+      <p class="info-text">Test the protected endpoint with your JWT or API key</p>
+      
+      <div class="protected-actions">
+        <button id="test-jwt-btn" class="btn btn-primary">Test with JWT</button>
+        <button id="test-api-key-btn" class="btn btn-primary" disabled>Test with API Key</button>
+      </div>
+
+      <div class="form-group">
+        <label for="api-key-input">Or enter an API key manually:</label>
+        <input type="text" id="api-key-input" placeholder="Paste your API key here">
+        <button id="test-custom-key-btn" class="btn btn-secondary">Test Custom Key</button>
+      </div>
+
+      <div id="protected-result" class="result-box"></div>
+    </section>
+
+    <footer>
+      <p>Built with NestJS • <a href="https://github.com/kodirov8788/nestjs-auth-api-key-kit" target="_blank">View on GitHub</a></p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
