@@ -2,6 +2,16 @@
 
 A production-ready NestJS portfolio kit demonstrating JWT authentication and secure API key management. Perfect for freelance client projects requiring flexible authentication strategies.
 
+## 🌐 Live Demo UI
+
+Try the interactive demo at the root path (`/`) when deployed. The demo UI lets you:
+- Check system health and database connectivity
+- Sign up and log in with email/password
+- Create and manage API keys
+- Test protected endpoints with JWT or API key authentication
+
+All API endpoints documented below are also accessible programmatically via curl or any HTTP client.
+
 ## 🎯 What Problem Does This Solve?
 
 Many client projects need:
@@ -77,6 +87,8 @@ npm run start:prod
 The API will be available at `http://localhost:3000`
 
 ## 📖 API Usage Examples
+
+All endpoints below are accessible both through the demo UI at `/` and programmatically via HTTP clients.
 
 ### 1. Check Health
 

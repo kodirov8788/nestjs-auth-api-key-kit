@@ -4,11 +4,39 @@
     {
       "src": "api/index.ts",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/styles.css",
+      "dest": "/public/styles.css"
+    },
+    {
+      "src": "/app.js",
+      "dest": "/public/app.js"
+    },
+    {
+      "src": "/health",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/auth/(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/api-keys(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/protected/(.*)",
       "dest": "api/index.ts"
     }
   ],
