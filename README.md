@@ -292,6 +292,15 @@ prisma/
 
 ## 🚢 Deployment
 
+This kit supports **two deployment modes**:
+
+1. **Traditional Node.js** (Railway, Render, Fly.io) - Uses `npm run start:prod` 
+2. **Vercel Serverless** - Uses the Express adapter in `api/index.ts`
+
+Both modes share the same codebase and modules. Choose based on your needs:
+- Use **Vercel** for quick portfolio demos and serverless scaling
+- Use **Railway/Render/Fly.io** for always-on services and WebSocket support
+
 ### Environment Variables
 
 Set these environment variables in your deployment platform:
@@ -307,6 +316,29 @@ PORT=3000
 ```bash
 openssl rand -base64 32
 ```
+
+### Deploy to Vercel (Serverless)
+
+This kit includes a Vercel serverless adapter for easy deployment:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+**Required Environment Variables in Vercel Dashboard:**
+- `DATABASE_URL` - Your PostgreSQL connection string
+- `DIRECT_URL` - Direct database connection (required by Prisma)
+- `JWT_SECRET` - Your JWT signing secret
+
+**Important Notes:**
+- Vercel uses the serverless function in `api/index.ts`
+- First deployment: Run `npx prisma db push` locally or via Vercel's terminal
+- Cold starts may occur on serverless - consider connection pooling for production
+- For connection pooling, use Prisma Data Proxy or PgBouncer with `DIRECT_URL`
 
 ### Deploy to Railway
 
